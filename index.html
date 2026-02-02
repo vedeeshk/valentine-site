@@ -207,21 +207,25 @@
       display:none;           /* becomes grid when active */
       place-items:center;
       padding: 18px;
-      background:
-        radial-gradient(900px 500px at 50% 20%, #ff4d7d22, transparent 60%),
-        linear-gradient(180deg, #00000033, #00000055);
+      /* IMPORTANT: fully cover what's underneath */
+      background: rgba(10, 12, 28, 0.92);
+      backdrop-filter: blur(10px);
+
+        /* allow scrolling if content is tall */
+      overflow-y: auto;
+      z-index: 10;
     }
+
     .success-inner{
-      width:min(560px, 92%);
-      max-height: min(520px, calc(100vh - 180px)); /* stays within viewport */
-      overflow-y: auto;                             /* scroll if content is tall */
-      text-align:center;
-      background: #ffffff10;
-      border:1px solid #ffffff22;
-      border-radius: 20px;
-      padding: 20px 18px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(90px);
+        width:min(560px, 92%);
+        text-align:center;
+
+        background: rgba(255, 255, 255, 0.10);
+        border:1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 20px;
+
+        padding: 20px 18px;
+        box-shadow: var(--shadow);
     }
     .success h2{
       margin: 8px 0 6px;
@@ -251,8 +255,8 @@
       flex-wrap: wrap;
     }
     .photos img{
-      width: clamp(110px, 18vw, 150px);
-      height: clamp(110px, 18vw, 150px);
+      width: 130px;
+      height: 130px;
       object-fit: cover;
       border-radius: 16px;
       border: 1px solid #ffffff22;
@@ -417,7 +421,7 @@
       stopConfetti();
       noCount = 0;
       promptEl.textContent = "Sooo… I’ve been meaning to ask you something 💭";
-      tinyHint.textContent = "Tip: try clicking “No” 😈";
+      tinyHint.textContent = "Try clicking “No” ";
 
       // reset button positions
       noBtn.style.left = "50%";
